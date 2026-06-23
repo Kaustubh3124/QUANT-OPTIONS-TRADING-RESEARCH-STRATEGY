@@ -39,8 +39,7 @@ st.set_page_config(
 
 st.markdown("""
 <style>
-    /* Hide Streamlit top header and footer */
-    header {visibility: hidden;}
+    /* Hide Streamlit footer */
     footer {visibility: hidden;}
 
     /* Global fade-in animation */
