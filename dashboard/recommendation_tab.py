@@ -109,7 +109,7 @@ def render(ticker_name: str, start: str, end: str):
                     "steps": [
                         {"range": [0, 30], "color": "rgba(46, 213, 115, 0.2)"},
                         {"range": [30, 70], "color": "rgba(255, 165, 2, 0.15)"},
-                        {"range": [70, 100], "color": "rgba(255, 71, 87, 0.2)"},
+                        {"range": [70, 100], "color": "rgba(244, 63, 94, 0.2)"},
                     ],
                 },
             ))
@@ -139,7 +139,7 @@ def render(ticker_name: str, start: str, end: str):
                     yaxis=dict(autorange="reversed"),
                     margin=dict(l=10, r=10, t=10, b=10),
                 )
-                fig_feat.update_xaxes(gridcolor="rgba(128,128,128,0.1)")
+                fig_feat.update_xaxes(gridcolor="rgba(255,255,255,0.03)")
                 st.plotly_chart(fig_feat, use_container_width=True)
         else:
             st.warning(f"ML model could not be trained: {result.get('error', 'Unknown error')}")
@@ -163,7 +163,7 @@ def render(ticker_name: str, start: str, end: str):
 
         # Color based on rank
         if rank == 1:
-            border_color = "#00d4aa"
+            border_color = "#8b5cf6"
             badge = "🥇 TOP PICK"
         elif rank == 2:
             border_color = "#ffa502"

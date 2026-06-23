@@ -71,8 +71,8 @@ def render(ticker_name: str, start: str, end: str):
             low=df["Low"],
             close=df["Close"],
             name="OHLC",
-            increasing_line_color="#00d4aa",
-            decreasing_line_color="#ff4757",
+            increasing_line_color="#8b5cf6",
+            decreasing_line_color="#f43f5e",
         ),
         row=1, col=1,
     )
@@ -99,7 +99,7 @@ def render(ticker_name: str, start: str, end: str):
     )
 
     # Regime shading
-    regime_colors = {"BULL": "rgba(0, 212, 170, 0.08)", "BEAR": "rgba(255, 71, 87, 0.08)", "SIDEWAYS": "rgba(255, 165, 2, 0.05)"}
+    regime_colors = {"BULL": "rgba(139, 92, 246, 0.08)", "BEAR": "rgba(244, 63, 94, 0.08)", "SIDEWAYS": "rgba(255, 165, 2, 0.05)"}
 
     # Add regime annotations at the top
     prev_regime = None
@@ -132,7 +132,7 @@ def render(ticker_name: str, start: str, end: str):
 
     # Volume bars
     colors = [
-        "#00d4aa" if c >= o else "#ff4757"
+        "#8b5cf6" if c >= o else "#f43f5e"
         for c, o in zip(df["Close"], df["Open"])
     ]
     fig.add_trace(
@@ -157,8 +157,8 @@ def render(ticker_name: str, start: str, end: str):
         margin=dict(l=10, r=10, t=40, b=10),
     )
 
-    fig.update_xaxes(gridcolor="rgba(128,128,128,0.1)")
-    fig.update_yaxes(gridcolor="rgba(128,128,128,0.1)")
+    fig.update_xaxes(gridcolor="rgba(255,255,255,0.03)")
+    fig.update_yaxes(gridcolor="rgba(255,255,255,0.03)")
 
     st.plotly_chart(fig, use_container_width=True)
 
@@ -185,7 +185,7 @@ def render(ticker_name: str, start: str, end: str):
                 labels=summary["Regime"],
                 values=summary["Days"],
                 hole=0.45,
-                marker_colors=["#00d4aa", "#ff4757", "#ffa502"],
+                marker_colors=["#8b5cf6", "#f43f5e", "#ffa502"],
                 textinfo="label+percent",
                 textfont_size=14,
             )

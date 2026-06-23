@@ -90,7 +90,7 @@ def render(ticker_name: str, start: str, end: str):
     fig_dist.add_trace(go.Histogram(
         x=pnl_data,
         nbinsx=30,
-        marker_color="#00d4aa",
+        marker_color="#8b5cf6",
         opacity=0.7,
         name="P&L Distribution",
     ))
@@ -105,7 +105,7 @@ def render(ticker_name: str, start: str, end: str):
         annotation_position="top",
     )
     fig_dist.add_vline(
-        x=cvar, line_dash="dash", line_color="#ff4757",
+        x=cvar, line_dash="dash", line_color="#f43f5e",
         annotation_text=f"CVaR 95%: ₹{cvar:,.0f}",
         annotation_position="top",
     )
@@ -123,8 +123,8 @@ def render(ticker_name: str, start: str, end: str):
         showlegend=False,
         margin=dict(l=10, r=10, t=10, b=10),
     )
-    fig_dist.update_xaxes(gridcolor="rgba(128,128,128,0.1)")
-    fig_dist.update_yaxes(gridcolor="rgba(128,128,128,0.1)")
+    fig_dist.update_xaxes(gridcolor="rgba(255,255,255,0.03)")
+    fig_dist.update_yaxes(gridcolor="rgba(255,255,255,0.03)")
 
     st.plotly_chart(fig_dist, use_container_width=True)
 
@@ -139,9 +139,9 @@ def render(ticker_name: str, start: str, end: str):
         fig_dd.add_trace(go.Scatter(
             x=dd.index, y=dd["Drawdown_Pct"],
             fill="tozeroy",
-            fillcolor="rgba(255, 71, 87, 0.2)",
-            line=dict(color="#ff4757", width=1.5),
-            name="Drawdown %",
+            fillcolor="rgba(244, 63, 94, 0.2)",
+            line=dict(color="#f43f5e", width=1.5),
+            name="Drawdown %", line_shape="spline",
         ))
 
         fig_dd.update_layout(
@@ -153,8 +153,8 @@ def render(ticker_name: str, start: str, end: str):
             showlegend=False,
             margin=dict(l=10, r=10, t=10, b=10),
         )
-        fig_dd.update_xaxes(gridcolor="rgba(128,128,128,0.1)")
-        fig_dd.update_yaxes(gridcolor="rgba(128,128,128,0.1)")
+        fig_dd.update_xaxes(gridcolor="rgba(255,255,255,0.03)")
+        fig_dd.update_yaxes(gridcolor="rgba(255,255,255,0.03)")
 
         st.plotly_chart(fig_dd, use_container_width=True)
 
@@ -183,7 +183,7 @@ def render(ticker_name: str, start: str, end: str):
             st.markdown("### Risk-Return Trade-off")
 
             fig_scatter = go.Figure()
-            colors = ["#00d4aa", "#ff6348", "#3742fa", "#ffa502", "#e056fd", "#2ed573", "#f8a5c2"]
+            colors = ["#8b5cf6", "#ff6348", "#3742fa", "#ffa502", "#e056fd", "#2ed573", "#f8a5c2"]
 
             for i, (name, row) in enumerate(comp.iterrows()):
                 fig_scatter.add_trace(go.Scatter(
@@ -210,7 +210,7 @@ def render(ticker_name: str, start: str, end: str):
                 showlegend=False,
                 margin=dict(l=10, r=10, t=10, b=10),
             )
-            fig_scatter.update_xaxes(gridcolor="rgba(128,128,128,0.1)")
-            fig_scatter.update_yaxes(gridcolor="rgba(128,128,128,0.1)")
+            fig_scatter.update_xaxes(gridcolor="rgba(255,255,255,0.03)")
+            fig_scatter.update_yaxes(gridcolor="rgba(255,255,255,0.03)")
 
             st.plotly_chart(fig_scatter, use_container_width=True)

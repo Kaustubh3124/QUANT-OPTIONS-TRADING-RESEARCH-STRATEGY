@@ -61,7 +61,7 @@ def render(ticker_name: str, start: str, end: str):
             labels=[get_strategy(k).name for k in active],
             values=list(active.values()),
             hole=0.45,
-            marker_colors=["#00d4aa", "#ffa502", "#3742fa", "#ff6348", "#e056fd"],
+            marker_colors=["#8b5cf6", "#ffa502", "#3742fa", "#ff6348", "#e056fd"],
             textinfo="label+percent",
         )])
         fig_pie.update_layout(
@@ -129,7 +129,7 @@ def render(ticker_name: str, start: str, end: str):
         fig_eq = go.Figure()
 
         # Individual strategy equity lines
-        colors = ["rgba(0, 212, 170, 0.31)", "rgba(255, 165, 2, 0.31)", "rgba(55, 66, 250, 0.31)", "rgba(255, 99, 72, 0.31)"]
+        colors = ["rgba(139, 92, 246, 0.31)", "rgba(255, 165, 2, 0.31)", "rgba(55, 66, 250, 0.31)", "rgba(255, 99, 72, 0.31)"]
         for i, (name, seq) in enumerate(strat_eqs.items()):
             if not seq.empty:
                 fig_eq.add_trace(go.Scatter(
@@ -158,8 +158,8 @@ def render(ticker_name: str, start: str, end: str):
             legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
             margin=dict(l=10, r=10, t=30, b=10),
         )
-        fig_eq.update_xaxes(gridcolor="rgba(128,128,128,0.1)")
-        fig_eq.update_yaxes(gridcolor="rgba(128,128,128,0.1)")
+        fig_eq.update_xaxes(gridcolor="rgba(255,255,255,0.03)")
+        fig_eq.update_yaxes(gridcolor="rgba(255,255,255,0.03)")
 
         st.plotly_chart(fig_eq, use_container_width=True)
 
@@ -178,7 +178,7 @@ def render(ticker_name: str, start: str, end: str):
                 x=attr["Strategy"].apply(lambda x: get_strategy(x).name),
                 y=attr["Total_PnL"],
                 marker_color=[
-                    "#00d4aa" if v > 0 else "#ff4757"
+                    "#8b5cf6" if v > 0 else "#f43f5e"
                     for v in attr["Total_PnL"]
                 ],
             )])
@@ -191,8 +191,8 @@ def render(ticker_name: str, start: str, end: str):
                 showlegend=False,
                 margin=dict(l=10, r=10, t=10, b=10),
             )
-            fig_bar.update_xaxes(gridcolor="rgba(128,128,128,0.1)")
-            fig_bar.update_yaxes(gridcolor="rgba(128,128,128,0.1)")
+            fig_bar.update_xaxes(gridcolor="rgba(255,255,255,0.03)")
+            fig_bar.update_yaxes(gridcolor="rgba(255,255,255,0.03)")
 
             st.plotly_chart(fig_bar, use_container_width=True)
 

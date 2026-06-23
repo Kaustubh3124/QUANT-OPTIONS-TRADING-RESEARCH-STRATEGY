@@ -59,9 +59,9 @@ def render(ticker_name: str, start: str, end: str):
             x=curve["Spot"], y=curve["PnL"],
             mode="lines",
             name="P&L at Expiry",
-            line=dict(color="#00d4aa", width=2.5),
+            line=dict(color="#8b5cf6", width=2.5),
             fill="tozeroy",
-            fillcolor="rgba(0, 212, 170, 0.1)",
+            fillcolor="rgba(139, 92, 246, 0.1)",
         ))
 
         # Zero line
@@ -93,8 +93,8 @@ def render(ticker_name: str, start: str, end: str):
             showlegend=False,
             margin=dict(l=10, r=10, t=10, b=10),
         )
-        fig.update_xaxes(gridcolor="rgba(128,128,128,0.1)")
-        fig.update_yaxes(gridcolor="rgba(128,128,128,0.1)")
+        fig.update_xaxes(gridcolor="rgba(255,255,255,0.03)")
+        fig.update_yaxes(gridcolor="rgba(255,255,255,0.03)")
 
         st.plotly_chart(fig, use_container_width=True)
 
@@ -148,7 +148,7 @@ def render(ticker_name: str, start: str, end: str):
 
     if compare_names:
         fig_compare = go.Figure()
-        colors = ["#00d4aa", "#ff6348", "#3742fa", "#ffa502", "#e056fd", "#2ed573", "#f8a5c2"]
+        colors = ["#8b5cf6", "#ff6348", "#3742fa", "#ffa502", "#e056fd", "#2ed573", "#f8a5c2"]
 
         for i, name in enumerate(compare_names):
             strat = get_strategy(name)
@@ -173,7 +173,7 @@ def render(ticker_name: str, start: str, end: str):
             legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
             margin=dict(l=10, r=10, t=40, b=10),
         )
-        fig_compare.update_xaxes(gridcolor="rgba(128,128,128,0.1)")
-        fig_compare.update_yaxes(gridcolor="rgba(128,128,128,0.1)")
+        fig_compare.update_xaxes(gridcolor="rgba(255,255,255,0.03)")
+        fig_compare.update_yaxes(gridcolor="rgba(255,255,255,0.03)")
 
         st.plotly_chart(fig_compare, use_container_width=True)

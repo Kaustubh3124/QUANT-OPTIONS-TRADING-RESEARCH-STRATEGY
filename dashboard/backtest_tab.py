@@ -109,10 +109,10 @@ def render(ticker_name: str, start: str, end: str):
     fig_eq.add_trace(
         go.Scatter(
             x=eq.index, y=eq["Equity"],
-            name="Equity",
-            line=dict(color="#00d4aa", width=2),
+            name="Equity", line_shape="spline",
+            line=dict(color="#8b5cf6", width=2),
             fill="tozeroy",
-            fillcolor="rgba(0, 212, 170, 0.08)",
+            fillcolor="rgba(139, 92, 246, 0.08)",
         ),
         row=1, col=1,
     )
@@ -128,10 +128,10 @@ def render(ticker_name: str, start: str, end: str):
     fig_eq.add_trace(
         go.Scatter(
             x=dd.index, y=dd["Drawdown_Pct"],
-            name="Drawdown %",
-            line=dict(color="#ff4757", width=1.5),
+            name="Drawdown %", line_shape="spline",
+            line=dict(color="#f43f5e", width=1.5),
             fill="tozeroy",
-            fillcolor="rgba(255, 71, 87, 0.15)",
+            fillcolor="rgba(244, 63, 94, 0.15)",
         ),
         row=2, col=1,
     )
@@ -144,8 +144,8 @@ def render(ticker_name: str, start: str, end: str):
         showlegend=False,
         margin=dict(l=10, r=10, t=30, b=10),
     )
-    fig_eq.update_xaxes(gridcolor="rgba(128,128,128,0.1)")
-    fig_eq.update_yaxes(gridcolor="rgba(128,128,128,0.1)")
+    fig_eq.update_xaxes(gridcolor="rgba(255,255,255,0.03)")
+    fig_eq.update_yaxes(gridcolor="rgba(255,255,255,0.03)")
 
     st.plotly_chart(fig_eq, use_container_width=True)
 
@@ -166,9 +166,9 @@ def render(ticker_name: str, start: str, end: str):
             x=mr.columns,
             y=mr.index.astype(str),
             colorscale=[
-                [0, "#ff4757"],
+                [0, "#f43f5e"],
                 [0.5, "#2f3542"],
-                [1, "#00d4aa"],
+                [1, "#8b5cf6"],
             ],
             zmid=0,
             text=[[f"{v:.1f}%" for v in row] for row in mr.values],

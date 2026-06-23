@@ -61,7 +61,7 @@ def render(ticker_name: str, start: str, end: str):
     fig_hv = go.Figure()
     for name, series, color in [
         ("10-Day HV", hv_10, "#ffa502"),
-        ("21-Day HV", hv_21, "#00d4aa"),
+        ("21-Day HV", hv_21, "#8b5cf6"),
         ("63-Day HV", hv_63, "#3742fa"),
     ]:
         fig_hv.add_trace(go.Scatter(
@@ -78,8 +78,8 @@ def render(ticker_name: str, start: str, end: str):
         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
         margin=dict(l=10, r=10, t=10, b=10),
     )
-    fig_hv.update_xaxes(gridcolor="rgba(128,128,128,0.1)")
-    fig_hv.update_yaxes(gridcolor="rgba(128,128,128,0.1)")
+    fig_hv.update_xaxes(gridcolor="rgba(255,255,255,0.03)")
+    fig_hv.update_yaxes(gridcolor="rgba(255,255,255,0.03)")
 
     st.plotly_chart(fig_hv, use_container_width=True)
 
@@ -89,7 +89,7 @@ def render(ticker_name: str, start: str, end: str):
     fig_hvrv = go.Figure()
     fig_hvrv.add_trace(go.Scatter(
         x=hv_21.index, y=hv_21 * 100,
-        name="21-Day HV", line=dict(color="#00d4aa", width=2),
+        name="21-Day HV", line=dict(color="#8b5cf6", width=2),
     ))
     fig_hvrv.add_trace(go.Scatter(
         x=rv_21.index, y=rv_21 * 100,
@@ -105,8 +105,8 @@ def render(ticker_name: str, start: str, end: str):
         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
         margin=dict(l=10, r=10, t=10, b=10),
     )
-    fig_hvrv.update_xaxes(gridcolor="rgba(128,128,128,0.1)")
-    fig_hvrv.update_yaxes(gridcolor="rgba(128,128,128,0.1)")
+    fig_hvrv.update_xaxes(gridcolor="rgba(255,255,255,0.03)")
+    fig_hvrv.update_yaxes(gridcolor="rgba(255,255,255,0.03)")
 
     st.plotly_chart(fig_hvrv, use_container_width=True)
 
@@ -129,13 +129,13 @@ def render(ticker_name: str, start: str, end: str):
             fig_cone.add_trace(go.Scatter(
                 x=cone["Window"], y=cone["P25"] * 100,
                 mode="lines", line=dict(width=0),
-                fill="tonexty", fillcolor="rgba(0, 212, 170, 0.15)",
+                fill="tonexty", fillcolor="rgba(139, 92, 246, 0.15)",
                 name="P25–P75 Range",
             ))
 
             # Lines
             for name, col, color, dash in [
-                ("Max", "Max", "#ff4757", "dot"),
+                ("Max", "Max", "#f43f5e", "dot"),
                 ("Median", "Median", "#ffa502", "dash"),
                 ("Min", "Min", "#2ed573", "dot"),
                 ("Current", "Current", "#ffffff", "solid"),
@@ -155,8 +155,8 @@ def render(ticker_name: str, start: str, end: str):
                 legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
                 margin=dict(l=10, r=10, t=10, b=10),
             )
-            fig_cone.update_xaxes(gridcolor="rgba(128,128,128,0.1)")
-            fig_cone.update_yaxes(gridcolor="rgba(128,128,128,0.1)")
+            fig_cone.update_xaxes(gridcolor="rgba(255,255,255,0.03)")
+            fig_cone.update_yaxes(gridcolor="rgba(255,255,255,0.03)")
 
             st.plotly_chart(fig_cone, use_container_width=True)
 
@@ -170,12 +170,12 @@ def render(ticker_name: str, start: str, end: str):
             number={"suffix": "th", "font": {"size": 36, "color": "white"}},
             gauge={
                 "axis": {"range": [0, 100], "tickwidth": 1, "tickcolor": "white"},
-                "bar": {"color": "#00d4aa"},
+                "bar": {"color": "#8b5cf6"},
                 "bgcolor": "rgba(255,255,255,0.05)",
                 "steps": [
                     {"range": [0, 20], "color": "rgba(46, 213, 115, 0.3)"},
                     {"range": [20, 80], "color": "rgba(255, 165, 2, 0.2)"},
-                    {"range": [80, 100], "color": "rgba(255, 71, 87, 0.3)"},
+                    {"range": [80, 100], "color": "rgba(244, 63, 94, 0.3)"},
                 ],
                 "threshold": {
                     "line": {"color": "white", "width": 3},
@@ -233,7 +233,7 @@ def render(ticker_name: str, start: str, end: str):
             fig_garch.add_trace(go.Scatter(
                 x=hv_21.tail(252).index, y=hv_21.tail(252) * 100,
                 name="21-Day HV",
-                line=dict(color="#00d4aa", width=1.5, dash="dash"),
+                line=dict(color="#8b5cf6", width=1.5, dash="dash"),
             ))
 
             fig_garch.update_layout(
@@ -245,8 +245,8 @@ def render(ticker_name: str, start: str, end: str):
                 legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
                 margin=dict(l=10, r=10, t=10, b=10),
             )
-            fig_garch.update_xaxes(gridcolor="rgba(128,128,128,0.1)")
-            fig_garch.update_yaxes(gridcolor="rgba(128,128,128,0.1)")
+            fig_garch.update_xaxes(gridcolor="rgba(255,255,255,0.03)")
+            fig_garch.update_yaxes(gridcolor="rgba(255,255,255,0.03)")
 
             st.plotly_chart(fig_garch, use_container_width=True)
 

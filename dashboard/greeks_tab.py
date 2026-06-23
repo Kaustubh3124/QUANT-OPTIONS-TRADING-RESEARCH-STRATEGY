@@ -113,8 +113,8 @@ def render(ticker_name: str, start: str, end: str):
         showlegend=False,
         margin=dict(l=10, r=10, t=10, b=10),
     )
-    fig_decay.update_xaxes(gridcolor="rgba(128,128,128,0.1)")
-    fig_decay.update_yaxes(gridcolor="rgba(128,128,128,0.1)")
+    fig_decay.update_xaxes(gridcolor="rgba(255,255,255,0.03)")
+    fig_decay.update_yaxes(gridcolor="rgba(255,255,255,0.03)")
 
     st.plotly_chart(fig_decay, use_container_width=True)
 
@@ -175,7 +175,7 @@ def make_greeks_timeline(days, deltas, gammas, thetas, vegas):
     )
 
     configs = [
-        (deltas, "#00d4aa", 1, 1),
+        (deltas, "#8b5cf6", 1, 1),
         (gammas, "#ffa502", 1, 2),
         (thetas, "#ff6348", 2, 1),
         (vegas, "#3742fa", 2, 2),
@@ -202,7 +202,7 @@ def make_greeks_timeline(days, deltas, gammas, thetas, vegas):
 
     # Reverse x-axis (DTE decreasing)
     for i in range(1, 5):
-        fig.update_xaxes(autorange="reversed", gridcolor="rgba(128,128,128,0.1)", row=(i - 1) // 2 + 1, col=(i - 1) % 2 + 1)
-        fig.update_yaxes(gridcolor="rgba(128,128,128,0.1)", row=(i - 1) // 2 + 1, col=(i - 1) % 2 + 1)
+        fig.update_xaxes(autorange="reversed", gridcolor="rgba(255,255,255,0.03)", row=(i - 1) // 2 + 1, col=(i - 1) % 2 + 1)
+        fig.update_yaxes(gridcolor="rgba(255,255,255,0.03)", row=(i - 1) // 2 + 1, col=(i - 1) % 2 + 1)
 
     return fig
