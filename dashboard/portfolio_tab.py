@@ -129,7 +129,7 @@ def render(ticker_name: str, start: str, end: str):
         fig_eq = go.Figure()
 
         # Individual strategy equity lines
-        colors = ["#00d4aa50", "#ffa50250", "#3742fa50", "#ff634850"]
+        colors = ["rgba(0, 212, 170, 0.31)", "rgba(255, 165, 2, 0.31)", "rgba(55, 66, 250, 0.31)", "rgba(255, 99, 72, 0.31)"]
         for i, (name, seq) in enumerate(strat_eqs.items()):
             if not seq.empty:
                 fig_eq.add_trace(go.Scatter(
