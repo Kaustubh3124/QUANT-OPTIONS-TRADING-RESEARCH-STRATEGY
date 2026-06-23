@@ -206,7 +206,7 @@ def render(ticker_name: str, start: str, end: str):
     trades_display = trades_display.sort_values("Entry_Date", ascending=False)
 
     st.dataframe(
-        trades_display.style.applymap(
+        trades_display.style.map(
             lambda v: "color: #00d4aa" if isinstance(v, (int, float)) and v > 0
             else "color: #ff4757" if isinstance(v, (int, float)) and v < 0
             else "",
