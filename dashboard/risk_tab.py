@@ -41,7 +41,8 @@ def render(ticker_name: str, start: str, end: str):
                 if results:
                     first_key = list(results.keys())[0]
                     st.session_state["bt_trades"] = results[first_key]
-                    st.session_state["bt_capital"] = INITIAL_CAPITAL
+                    if "bt_capital" not in st.session_state:
+                        st.session_state["bt_capital"] = INITIAL_CAPITAL
 
         if "risk_all_results" not in st.session_state:
             return

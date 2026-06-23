@@ -69,7 +69,7 @@ def render(ticker_name: str, start: str, end: str):
             return
 
         st.session_state["bt_trades"] = trades
-        st.session_state["bt_capital"] = capital
+
 
     # --- Display results ---
     if "bt_trades" not in st.session_state:
